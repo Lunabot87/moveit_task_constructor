@@ -285,6 +285,7 @@ void TaskListModel::processTaskStatisticsMessage(const std::string& id,
                                                  const moveit_task_constructor_msgs::TaskStatistics& msg) {
 	auto it = remote_tasks_.find(id);
 	if (it == remote_tasks_.cend()) {
+		// TODO(v4hn): cache as we might receive this before the actual description
 		ROS_WARN("unknown task: %s", id.c_str());
 		return;
 	}
